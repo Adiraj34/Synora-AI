@@ -227,7 +227,7 @@ Project screenshots, UI previews, architecture diagrams, and demo videos will be
 Passionate about building AI-powered systems that combine intelligent automation, productivity analytics, and user-centric design.
 
 - GitHub: https://github.com/Adiraj34
-- LinkedIn: *(Add your LinkedIn profile here)*
+- LinkedIn: https://www.linkedin.com/in/aditya-raj-11545b249/
 
 ---
 
