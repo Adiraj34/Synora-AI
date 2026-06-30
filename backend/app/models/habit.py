@@ -5,8 +5,8 @@ from sqlalchemy import String
 from app.database.database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Habit(Base):
+    __tablename__ = "habits"
 
     id = Column(
         Integer,
@@ -16,10 +16,12 @@ class User(Base):
 
     name = Column(String)
 
-    email = Column(
-        String,
-        unique=True,
-        index=True
+    streak = Column(
+        Integer,
+        default=0
     )
 
-    password = Column(String)
+    completed = Column(
+        String,
+        default="No"
+    )

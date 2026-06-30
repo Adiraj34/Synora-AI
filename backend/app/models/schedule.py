@@ -5,8 +5,8 @@ from sqlalchemy import String
 from app.database.database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Schedule(Base):
+    __tablename__ = "schedules"
 
     id = Column(
         Integer,
@@ -14,12 +14,8 @@ class User(Base):
         index=True
     )
 
-    name = Column(String)
+    task_name = Column(String)
 
-    email = Column(
-        String,
-        unique=True,
-        index=True
-    )
+    start_time = Column(String)
 
-    password = Column(String)
+    end_time = Column(String)

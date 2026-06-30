@@ -1,25 +1,52 @@
-tasks = []
+from app.models.task import Task
 
 
-def create_task(task):
-    tasks.append(task)
+def create_task(db, task):
+
+    new_task = Task(
+        title=task.title,
+        priority=task.priority
+    )
+
+    db.add(new_task)
+    db.commit()
+    db.refresh(new_task)
+
+    return new_task
+
+
+def get_tasks(db):
+    return db.query(Task).all()
+
+
+def delete_task(db, task_id):
+
+    task = db.query(Task).filter(
+        Task.id == task_id
+    ).first()
+
+    if task is None:
+        return None
+
+    db.delete(task)
+    db.commit()
+
     return task
 
 
-def get_tasks():
-    return tasks
+def update_task(db, task_id, task):
 
+    existing_task = db.query(Task).filter(
+        Task.id == task_id
+    ).first()
 
-def delete_task(task_id):
-    if task_id >= len(tasks):
+    if existing_task is None:
         return None
 
-    return tasks.pop(task_id)
+    existing_task.title = task.title
+    existing_task.priority = task.priority
 
+    db.commit()
+    db.refresh(existing_task)
 
-def update_task(task_id, task):
-    if task_id >= len(tasks):
-        return None
-
-    tasks[task_id] = task
-    return task
+    return existing_task

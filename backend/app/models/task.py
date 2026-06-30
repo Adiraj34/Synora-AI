@@ -5,8 +5,8 @@ from sqlalchemy import String
 from app.database.database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Task(Base):
+    __tablename__ = "tasks"
 
     id = Column(
         Integer,
@@ -14,12 +14,6 @@ class User(Base):
         index=True
     )
 
-    name = Column(String)
+    title = Column(String)
 
-    email = Column(
-        String,
-        unique=True,
-        index=True
-    )
-
-    password = Column(String)
+    priority = Column(String)
